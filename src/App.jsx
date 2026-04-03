@@ -5,10 +5,11 @@ import { useState } from "react"
 export default function App() {
 
   const [Search, setSearch] = useState("")
+  const [Sorted, setIsSorted] = useState(false)
   return (
     <div>
-      <Header Search={Search} setSearch={setSearch}/>
-      <QuotesList Search={Search}/>
+      <Header Search={Search} setSearch={setSearch} Sorted={Sorted} setIsSorted={setIsSorted}/>
+      <QuotesList Search={Search} Sorted={Sorted}/>
       <Footer />
     </div>
   )

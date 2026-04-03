@@ -1,7 +1,7 @@
 import Quote from "./Quote"
 import { useState, useEffect } from "react"
 
-export default function QuotesList({ Search }) {
+export default function QuotesList({ Search , Sorted}) {
 
     const [quotes, setQuotes] = useState([]);
 
@@ -20,6 +20,14 @@ export default function QuotesList({ Search }) {
         item.q.toLowerCase().includes(Search.toLowerCase()) ||
         item.a.toLowerCase().includes(Search.toLowerCase())
     );
+
+    if(Sorted){
+    filteredQuotes.sort((a, b) => {
+    if (a.a < b.a) return -1;
+    if (a.a > b.a) return 1;
+    return 0;
+    });
+    }
 
 
     return (
