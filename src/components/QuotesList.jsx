@@ -1,7 +1,7 @@
 import Quote from "./Quote"
 import { useState, useEffect } from "react"
 
-export default function QuotesList() {
+export default function QuotesList({ Search }) {
 
     const [quotes, setQuotes] = useState([]);
 
@@ -16,9 +16,15 @@ export default function QuotesList() {
         .catch(err => console.log(err));
 }, []);
 
+    const filteredQuotes = quotes.filter((item) =>
+        item.q.toLowerCase().includes(Search.toLowerCase()) ||
+        item.a.toLowerCase().includes(Search.toLowerCase())
+    );
+
+
     return (
-        <div className="grid col-span-1 gap-3 p-1 mt-3">
-            {quotes.map((item, index) => (
+        <div className="grid col-span-1 gap-3 p-1 mt-3 mx-8">
+            {filteredQuotes.map((item, index) => (
                 <Quote key={index} q={item.q} a={item.a} />
             ))}
         </div>
