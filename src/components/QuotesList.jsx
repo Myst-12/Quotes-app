@@ -17,7 +17,7 @@ export default function QuotesList() {
 }, []);
 
     return (
-        <div>
+        <div className="grid col-span-1 gap-3 p-1 mt-3">
             {quotes.map((item, index) => (
                 <Quote key={index} q={item.q} a={item.a} />
             ))}
